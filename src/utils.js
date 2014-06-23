@@ -53,6 +53,8 @@ var utils = {
 
   filter: $.grep,
 
+  disableRequests: false,
+
   every: function(obj, test) {
     var result = true;
 
@@ -98,7 +100,13 @@ var utils = {
 
       later = function() {
         timeout = null;
-        if (!immediate) { result = func.apply(context, args); }
+        if(utils.disableRequests) {
+          utils.disableRequests = false;
+          result = null;
+        }
+        else {
+          if (!immediate) { result = func.apply(context, args); }
+        }
       };
 
       callNow = immediate && !timeout;

@@ -122,6 +122,7 @@ var Transport = (function() {
     },
 
     cancelAllPendingRequests: function() {
+      utils.disableRequests = true;
       $.each(pendingRequests, function(key, jqXhr) {
         if (jqXhr) {
           jqXhr.abort();
