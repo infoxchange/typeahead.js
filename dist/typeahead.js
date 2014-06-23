@@ -353,6 +353,15 @@
                     this._get(url, cb);
                 }
                 return !!resp;
+            },
+            cancelAllPendingRequests: function() {
+                $.each(pendingRequests, function(key, jqXhr) {
+                    if (jqXhr) {
+                        jqXhr.abort();
+                        pendingRequests[key] = null;
+                        decrementPendingRequests();
+                    }
+                });
             }
         });
         return Transport;
@@ -541,6 +550,11 @@
                         return suggestions.length < that.limit;
                     });
                     cb && cb(suggestions);
+                }
+            },
+            abortXhr: function() {
+                if (this.transport) {
+                    this.transport.cancelAllPendingRequests();
                 }
             }
         });
@@ -1031,6 +1045,11 @@
                 this._clearHint();
                 this._clearSuggestions();
                 this._getSuggestions();
+            },
+            abortXhr: function() {
+                utils.each(this.datasets, function(i, dataset) {
+                    dataset.abortXhr();
+                });
             }
         });
         return TypeaheadView;
@@ -1126,6 +1145,10 @@
                     var view = $(this).data(viewKey);
                     view && view.setQuery(query);
                 }
+            },
+            abortXhr: function() {
+                var view = $(this).data(viewKey);
+                view.abortXhr();
             }
         };
         jQuery.fn.typeahead = function(method) {
