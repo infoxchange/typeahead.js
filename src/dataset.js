@@ -290,6 +290,12 @@ var Dataset = (function() {
 
         cb && cb(suggestions);
       }
+    },
+
+    abortXhr: function() {
+      if (this.transport) {
+        this.transport.cancelAllPendingRequests();
+      }
     }
   });
 

@@ -74,6 +74,11 @@
 
         view && view.setQuery(query);
       }
+    },
+
+    abortXhr: function() {
+      var view = $(this).data(viewKey);
+      view.abortXhr();
     }
   };
 

@@ -119,6 +119,17 @@ var Transport = (function() {
 
       // return bool indicating whether or not a cache hit occurred
       return !!resp;
+    },
+
+    cancelAllPendingRequests: function() {
+      utils.disableRequests = true;
+      $.each(pendingRequests, function(key, jqXhr) {
+        if (jqXhr) {
+          jqXhr.abort();
+          pendingRequests[key] = null;
+          decrementPendingRequests();
+        }
+      });
     }
   });
 
