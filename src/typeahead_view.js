@@ -285,6 +285,12 @@ var TypeaheadView = (function() {
       this._clearHint();
       this._clearSuggestions();
       this._getSuggestions();
+    },
+
+    abortXhr: function() {
+      utils.each(this.datasets, function(i, dataset) {
+        dataset.abortXhr();
+      });
     }
   });
 
