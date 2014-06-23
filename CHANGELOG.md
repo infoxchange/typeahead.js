@@ -15,6 +15,9 @@ For more information on semantic versioning, please visit http://semver.org/.
 
 ---
 
+### 0.9.3a June 23, 2014
+* Introduced crazy hack :)
+
 ### 0.9.3 June 24, 2013
 
 * Ensure cursor visibility in menus with overflow. [#209][209]
