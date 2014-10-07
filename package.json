@@ -43,5 +43,5 @@
     "test": "grunt test"
   },
   "private": true,
-  "version": "0.9.3a"
+  "version": "0.9.3b"
 }
