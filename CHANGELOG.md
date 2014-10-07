@@ -15,6 +15,9 @@ For more information on semantic versioning, please visit http://semver.org/.
 
 ---
 
+### 0.9.3b October 07, 2014
+* abortXhr not working in some browsers (like Chrome on Mac Os & Android) - temp solution not executing it in those ones
+
 ### 0.9.3a June 23, 2014
 * Introduced crazy hack :)
 

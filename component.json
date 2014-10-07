@@ -1,6 +1,6 @@
 {
   "name": "typeahead.js",
-  "version": "0.9.3a",
+  "version": "0.9.3b",
   "main": [
     "dist/typeahead.js"
   ],

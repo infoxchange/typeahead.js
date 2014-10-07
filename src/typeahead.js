@@ -77,8 +77,11 @@
     },
 
     abortXhr: function() {
-      var view = $(this).data(viewKey);
-      view.abortXhr();
+      // TODO: this is null on some browsers? (Chrome Android 4.4, Chrome Mac Os)
+      if (this) {
+        var view = $(this).data(viewKey);
+        view.abortXhr();
+      }
     }
   };
 
